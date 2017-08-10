@@ -5,7 +5,7 @@ I expanded on the assignment some and turned it into an app where real time tick
 
 
 ### Project structure
-The non-boilerplate code is in `src`, and the majority of the work is done by the react components in `src/components`.
+The non-boilerplate code is in `src`, and the majority of the logic lives in the react components in `src/components`.
 
 ### Future work
 If I were to expand on this app, I would:
