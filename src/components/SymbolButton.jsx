@@ -10,10 +10,13 @@ const Button = styled.a`
     background-color: ${props => props.selected ? cryptoBlue : 'transparent' };
     color: ${props => props.ready ? (props.selected ? background : cryptoBlue) : inactiveGray };
     border: 1px solid ${props => props.ready ? cryptoBlue : inactiveGray};
-    padding: 10px 20px;
+    padding: 12px 20px;
     display: inline-block;
     font-size: 14px;
     cursor: ${props => props.ready ? 'pointer' : 'initial' };
+    width: 82px;
+    text-align: center;
+    border-radius: 3px;
 `
 
 const SymbolButton = (props) => {

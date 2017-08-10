@@ -19,7 +19,7 @@ const chartDataAverages = {}
 const AppDiv = styled.div`
     display: flex;
     flex-direction: row;
-    margin: 20px;
+    margin: 20px 50px;
 `
 
 const LoadingMessage = styled.div`

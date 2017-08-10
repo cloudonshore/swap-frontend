@@ -12,17 +12,18 @@ const cryptoBlue = "rgb(46, 154, 208)"
 
 const List = styled.div`
     height: 50px;
-    width: 200px;
+    margin-bottom: 3px;
 `
 
 const SymbolListDiv = styled.div`
     height: 100vh;
+    min-width: 220px;
     overflow: scroll;
 `
 
 const ListTitles = styled.div`
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 20px;
+    margin: 10px 0;
     color: ${props => props.active ? cryptoBlue : inactiveGray  }
 `
 
