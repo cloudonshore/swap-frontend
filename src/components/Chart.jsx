@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {VictoryChart, VictoryAxis, VictoryTheme, VictoryLine, VictoryLegend} from 'victory'
+import {VictoryChart, VictoryAxis, VictoryTheme, VictoryLine} from 'victory'
 import moment from 'moment'
 import {getAdjustedRange, getMinDate} from '../utils'
 
@@ -53,7 +53,6 @@ class Chart extends React.Component {
             />
             <VictoryAxis
                 dependentAxis
-                tickFormat={(d) =>{return moment(d).format('hh:mm:ss')}}
                 theme={VictoryTheme.material}
                 style={{axisLabel: {fontSize: 8, padding: 40, fill: fontColor}, ...axisStyle}}
                 label={symbol}

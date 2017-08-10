@@ -24,7 +24,7 @@ const wsSessionPromise = new Promise((resolve, reject)=>{
         connection.open()
     }
     catch (e){
-        reject(e)
+        alert("websocket connection refused by poloniex")
     }
 })
 
