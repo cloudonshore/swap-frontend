@@ -4,7 +4,6 @@
 import _ from 'lodash'
 
 
-
 export function dataReadyForDisplay(data){
     return data && data.length >=2 && !isRangeZero(data)
 }
@@ -19,6 +18,11 @@ function isRangeZero(data){
 export function getRange(data){
     const values = _.map(data, 'value')
     return [_.min(values), _.max(values)]
+}
+
+export function getMinDate(data){
+    const values = _.map(data, 'date')
+    return _.min(values)
 }
 
 

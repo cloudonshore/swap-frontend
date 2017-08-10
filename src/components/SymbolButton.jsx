@@ -4,14 +4,16 @@ import styled from 'styled-components'
 
 const cryptoBlue = "rgb(46, 154, 208)"
 const background = "rgb(35, 35, 40)"
+const inactiveGray = "rgb(99, 99, 99)"
 
 const Button = styled.a`
     background-color: ${props => props.selected ? cryptoBlue : 'transparent' };
-    color: ${props => props.selected ? background : cryptoBlue };
-    border: 1px solid ${cryptoBlue};
-    padding: 6px 14px;
+    color: ${props => props.ready ? (props.selected ? background : cryptoBlue) : inactiveGray };
+    border: 1px solid ${props => props.ready ? cryptoBlue : inactiveGray};
+    padding: 10px 20px;
+    display: inline-block;
     font-size: 14px;
-    cursor: pointer;
+    cursor: ${props => props.ready ? 'pointer' : 'initial' };
 `
 
 const SymbolButton = (props) => {

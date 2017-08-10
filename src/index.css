@@ -5,3 +5,27 @@ body {
     background: rgb(35, 35, 40);
     color: rgb(46, 154, 208);
 }
+
+.spinner {
+    width:50px;
+    height:50px;
+    border-radius:32px;
+    box-sizing:border-box;
+    border:2px groove white;
+    position:absolute;
+    left:50%;
+    top:150%;
+    margin:-16px 0px 0px -16px;
+    border-top-color:rgba(46,154,208,1);
+    border-left-color:rgba(46,154,208,0.9);
+    border-bottom-color:rgba(46,154,208,0.8);
+    border-right-color:rgba(46,154,208,0.7);
+    animation: rotate 1000ms infinite linear;
+    transform:translateZ(0px);
+}
+
+
+@keyframes rotate {
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(360deg);}
+}

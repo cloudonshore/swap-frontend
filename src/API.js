@@ -29,6 +29,7 @@ const wsSessionPromise = new Promise((resolve, reject)=>{
 })
 
 
+
 //fetches all symbols from the API synchronously
 export function loadSymbols(){
     return new Promise((resolve, reject) => {
@@ -50,9 +51,26 @@ export function loadSymbols(){
     })
 }
 
+var sub1
 //subscribes to the ticker func with provided callback
 export async function subscribeToTicker(callback){
     const session = await wsSessionPromise
-    session.subscribe('ticker', callback)
+    session.subscribe('ticker', callback).then(
+        function (subscription) {
+            sub1 = subscription;
+        }
+    )
     console.log(`subscibed to ticker`)
+}
+
+export async function unSubscribeToTicker(callback){
+    const session = await wsSessionPromise
+    session.unsubscribe(sub1).then(
+        function (gone) {
+            console.log("successfully unsubscribed")
+        },
+        function (error) {
+            console.log("unsubscribe failed")
+        }
+    );
 }

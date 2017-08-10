@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import _ from 'lodash'
+import styled from 'styled-components'
+
+
 import Chart from './Chart'
-import SymbolButton from './SymbolButton'
-
-import {SYMBOLS} from '../config'
+import SymbolList from './SymbolList'
+import {subscribeToTicker, unSubscribeToTicker} from '../API'
 import {dataReadyForDisplay} from '../utils'
-import {subscribeToTicker} from '../API'
-
 
 const timeInterval = 60 * 1000; // 1 minute
 const MA = require('moving-average');
@@ -16,6 +16,21 @@ const movingAverages = {}
 const chartData = {}
 const chartDataAverages = {}
 
+const AppDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+`
+
+const LoadingMessage = styled.div`
+    font-size: 50px;
+    align-self: center;
+    justify-self: center;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+`
+
 
 class App extends Component {
     state = {}
@@ -23,13 +38,15 @@ class App extends Component {
     constructor(props) {
         super(props)
         subscribeToTicker(this.updateMovingAverages.bind(this))
+        this.throttledForceUpdate = _.throttle(this.forceUpdate.bind(this), 500) //forceUpdate is throttled so if many ticker packets get sent simultaniously the UI won't get laggy
     }
 
     componentWillUnmount() {
-        clearInterval(this.updateInterval)
+        unSubscribeToTicker()
     }
 
-
+    //because of the number of ticker packets that can return simultaniously, forceUpdate with extenal variables is used instead of setState (for performance reasons).
+    // Immutable data structures could also solve this issue
     updateMovingAverages(tickerResult) {
         const [symbolPair, rawValue] = tickerResult
         const value = parseFloat(rawValue)
@@ -51,40 +68,39 @@ class App extends Component {
             value: movingAverages[symbolPair].movingAverage()
         })
 
-        if (!this.state.activeSymbol && chartData[symbolPair].length >= 2) {
+        if (!this.state.activeSymbol && dataReadyForDisplay(chartData[symbolPair])) {
             this.setState({activeSymbol: symbolPair})
         }
-
-        if (!this.state.startTime) {
-            this.setState({startTime: now})
-            this.updateInterval = setInterval(() => {
-                this.setState({endTime: Date.now()})
-            }, 50)
-        }
+        this.throttledForceUpdate()
     }
 
     renderMovingAverages() {
-        const {startTime, endTime, activeSymbol} = this.state
-        if (!_.every([activeSymbol, chartData[activeSymbol], startTime, endTime]) || chartData[activeSymbol].length < 2)
-            return <div>loading chart</div>
+        const {activeSymbol} = this.state
+        if (!_.every([activeSymbol, chartData[activeSymbol]]) || chartData[activeSymbol].length < 2)
+            return <LoadingMessage>
+                Waiting for ticker data from Poloniex
+                <br/>
+                <div className="spinner" />
+            </LoadingMessage>
 
         return <Chart
-            domain={[startTime, endTime]}
             chartData={chartData[activeSymbol]}
-            chartDataAverages={chartDataAverages[activeSymbol]}/>
-    }
-
-    renderSymbolButtons() {
-
+            chartDataAverages={chartDataAverages[activeSymbol]}
+            symbol={activeSymbol}
+        />
     }
 
     render() {
         const {loadingSymbols} = this.props
-        return <div className="App" style={{width: "75%", margin: "100px auto"}}>
-            {this.renderSymbolButtons()}
+        const {activeSymbol} = this.state;
+        return <AppDiv>
+            <SymbolList
+                activeSymbol={activeSymbol}
+                chartData={chartData}
+                selectSymbol={(symbol) => this.setState({activeSymbol: symbol})}
+            />
             {loadingSymbols ? "loading..." : this.renderMovingAverages()}
-
-        </div>
+        </AppDiv>
     }
 }
 
