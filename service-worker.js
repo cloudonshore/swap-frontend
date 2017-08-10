@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/swap/index.html","295cb9745023d9a72b4bb39a91ec6328"],["/swap/static/css/main.b3b1ac30.css","40bbcfe864fa222082226275dfafe88a"]];
+var precacheConfig = [["/swap-frontend/index.html","f2fa41c104ffe8898bc6aa49c5d6578c"],["/swap-frontend/static/css/main.b3b1ac30.css","40bbcfe864fa222082226275dfafe88a"]];
 var cacheName = 'sw-precache-v3-sw-precache-webpack-plugin-' + (self.registration ? self.registration.scope : '');
 
 
@@ -229,7 +229,7 @@ self.addEventListener('fetch', function(event) {
 
     // If shouldRespond is still false, check to see if this is a navigation
     // request, and if so, whether the URL matches navigateFallbackWhitelist.
-    var navigateFallback = '/swap/index.html';
+    var navigateFallback = '/swap-frontend/index.html';
     if (!shouldRespond &&
         navigateFallback &&
         (event.request.mode === 'navigate') &&
