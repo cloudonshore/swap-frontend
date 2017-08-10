@@ -1,7 +1,8 @@
 ## Poloniex Moving Average
 
-I expanded on the assignment some and turned it into an app.
-In the interface, real time ticker data is graphed along side the moving average for each currency pair.
+I expanded on the assignment some and turned it into an app where real time ticker data is graphed along side the moving average for each currency pair.
+[Live demo is here](https://cloudonshore.github.io/swap-frontend/)
+
 
 ### Project structure
 The non-boilerplate code is in `src`, and the majority of the work is done by the react components in `src/components`.
