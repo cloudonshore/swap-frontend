@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/swap-frontend/index.html","0ec631de2909c49314af13a8001ac9f5"],["/swap-frontend/static/css/main.b3b1ac30.css","40bbcfe864fa222082226275dfafe88a"]];
+var precacheConfig = [["/swap-frontend/index.html","4d0968a31a932a029a81516304984988"],["/swap-frontend/static/css/main.b3b1ac30.css","40bbcfe864fa222082226275dfafe88a"]];
 var cacheName = 'sw-precache-v3-sw-precache-webpack-plugin-' + (self.registration ? self.registration.scope : '');
 
 
