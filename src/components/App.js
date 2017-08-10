@@ -38,14 +38,14 @@ class App extends Component {
     constructor(props) {
         super(props)
         subscribeToTicker(this.updateMovingAverages.bind(this))
-        this.throttledForceUpdate = _.throttle(this.forceUpdate.bind(this), 500) //forceUpdate is throttled so if many ticker packets get sent simultaniously the UI won't get laggy
+        this.throttledForceUpdate = _.throttle(this.forceUpdate.bind(this), 500) //forceUpdate is throttled so if many ticker packets get sent simultaneously the UI won't get laggy
     }
 
     componentWillUnmount() {
         unSubscribeToTicker()
     }
 
-    //because of the number of ticker packets that can return simultaniously, forceUpdate with extenal variables is used instead of setState (for performance reasons).
+    //because of the number of ticker packets that can return simultaneously, forceUpdate with external variables is used instead of setState (for performance reasons).
     // Immutable data structures could also solve this issue
     updateMovingAverages(tickerResult) {
         const [symbolPair, rawValue] = tickerResult
