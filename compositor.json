@@ -1,0 +1,142 @@
+{
+  "name": "cloudonshore/swap-frontend",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "",
+  "branch": "",
+  "style": {
+    "name": "Default",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/BannerHeader",
+      "article": "article/BasicArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "-apple-system, BlinkMacSystemFont, sans-serif",
+    "fontWeight": 400,
+    "bold": 600,
+    "lineHeight": 1.5,
+    "typeScale": [
+      72,
+      48,
+      24,
+      20,
+      16,
+      14,
+      12
+    ],
+    "monospace": "Menlo, monospace",
+    "heading": {
+      "fontFamily": null,
+      "fontStyle": null,
+      "fontWeight": 600,
+      "lineHeight": 1.25,
+      "textTransform": null,
+      "letterSpacing": null
+    },
+    "h0": {},
+    "h1": {},
+    "h2": {},
+    "h3": {},
+    "h4": {},
+    "h5": {},
+    "h6": {},
+    "alternativeText": {},
+    "space": [
+      0,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96
+    ],
+    "layout": {
+      "maxWidth": 1024,
+      "centered": false
+    },
+    "colors": {
+      "text": "#111",
+      "background": "#fff",
+      "primary": "#08e",
+      "secondary": "#059",
+      "highlight": "#e08",
+      "border": "#ddd",
+      "muted": "#eee"
+    },
+    "border": {
+      "width": 1,
+      "radius": 2
+    },
+    "link": {},
+    "button": {
+      "hover": {
+        "boxShadow": "inset 0 0 0 999px rgba(0, 0, 0, .125)"
+      }
+    },
+    "input": {},
+    "body": {
+      "margin": 0
+    },
+    "breakpoints": {
+      "xs": "@media screen and (max-width:40em)",
+      "sm": "@media screen and (min-width:40em)",
+      "md": "@media screen and (min-width:52em)",
+      "lg": "@media screen and (min-width:64em)"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "https://github.com/cloudonshore/swap-frontend",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://npmjs.com/package/swap-frontend",
+          "text": "npm"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "swap-frontend",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "swap-frontend: ",
+          "url": null
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "cloudonshore",
+          "repo": "swap-frontend"
+        }
+      ],
+      "text": "v0.1.0"
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "<h2>Poloniex Moving Average</h2>\n<p>I expanded on the assignment some and turned it into an app where real time ticker data is graphed along side the moving average for each currency pair.\n<a href=\"https://cloudonshore.github.io/swap-frontend/\">Live demo is here</a>.</p>\n<h3>Project structure</h3>\n<p>The non-boilerplate code is in <code>src</code>, and the majority of the logic lives in the react components in <code>src/components</code>.</p>\n<h3>Future work</h3>\n<p>If I were to expand on this app, I would:</p>\n<ul>\n<li>add a state managment system, like Redux</li>\n<li>add some sort of type safety, like tcomb</li>\n<li>add a ledgend to the chart</li>\n<li>add more robust error handling for dropped socket connections. Poloniex often drops connections, which can occasionally lead to long wait times before the data displays</li>\n</ul>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/cloudonshore/swap-frontend",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/cloudonshore",
+          "text": "cloudonshore"
+        }
+      ]
+    }
+  ]
+}
